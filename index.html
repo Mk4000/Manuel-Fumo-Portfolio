@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manuel Rui Fumo · Administrador de Redes e Sistemas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F3F6F5;--surface:#FFFFFF;--ink:#10202A;--muted:#4D6068;--line:#D2DCDB;--accent:#0B6B63;--signal:#C77F00;--term:#0C161B;--termtx:#BFE9E2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1418;--surface:#121F25;--ink:#E7F0F1;--muted:#9DB2B8;--line:#24373E;--accent:#45C7B5;--signal:#F0B34A;--term:#060C0F;--termtx:#BFE9E2;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1418;--surface:#121F25;--ink:#E7F0F1;--muted:#9DB2B8;--line:#24373E;--accent:#45C7B5;--signal:#F0B34A;--term:#060C0F;--termtx:#BFE9E2;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Archivo,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;letter-spacing:.02em;text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px 0 64px}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1;margin:0 0 18px;font-weight:800;letter-spacing:-.03em}
+.role{font-size:1.2rem;font-weight:500;color:var(--accent);margin:0 0 16px}
+.lead{color:var(--muted);max-width:46ch;margin:0 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--accent)}
+.btn.p{background:var(--accent);color:var(--bg)}
+.btn.s{color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+.term{background:var(--term);color:var(--termtx);border-radius:14px;font:400 14px/1.7 "IBM Plex Mono",ui-monospace,Consolas,monospace;box-shadow:0 18px 40px rgba(0,0,0,.18);overflow:hidden}
+.term .bar{display:flex;gap:7px;padding:11px 14px;background:rgba(255,255,255,.06)}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#3b4a50}
+.term .bar i:first-child{background:#E8A317}
+.term pre{margin:0;padding:16px 18px 20px;white-space:pre-wrap;overflow-x:auto}
+.term b{color:#F0B34A;font-weight:500}.term em{color:#7a929a;font-style:normal}
+.cur{display:inline-block;width:8px;height:15px;background:var(--termtx);vertical-align:-2px;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 28px;letter-spacing:-.02em;line-height:1.15}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.fact{border-left:4px solid var(--signal);padding:4px 0 4px 14px}
+.fact strong{display:block;font-size:1.6rem;line-height:1.1}
+.fact span{color:var(--muted);font-size:14px}
+.job{border-left:3px solid var(--accent);padding-left:22px;margin-left:6px}
+.job h3{margin:0;font-size:1.3rem}.job .meta{color:var(--muted);margin:2px 0 14px;font-size:15px}
+.job ul,.skills ul{margin:0;padding-left:20px}.job li{margin-bottom:8px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{margin:0 0 12px;font-size:1.05rem;color:var(--accent)}
+.skills li{margin-bottom:5px;font-size:15px}
+.projs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.proj svg{display:block;width:100%;height:auto;background:var(--term)}
+.proj div{padding:18px}.proj h3{margin:0 0 6px;font-size:1.15rem}.proj p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.tags span{display:inline-block;font:500 12px "IBM Plex Mono",monospace;border:1px solid var(--line);padding:3px 9px;border-radius:999px;margin:0 6px 6px 0;color:var(--accent)}
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.edu h3{margin:0 0 4px;font-size:1.05rem}.edu p{margin:0;color:var(--muted);font-size:15px}
+.contact a.big{font-size:clamp(1.3rem,4vw,2.2rem);font-weight:800;text-decoration:none;color:var(--accent);word-break:break-all}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.tg{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 12px;cursor:pointer;font:inherit;font-size:14px}
+.net line{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 6;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-22}}
+@media (max-width:860px){.hero,.two{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.projs{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr 1fr}}
+@media (max-width:520px){.skills,.edu{grid-template-columns:1fr}nav ul{gap:14px}.facts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.net line,.cur{animation:none}html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<a class="logo" href="#topo">MRF</a>
+<ul><li><a href="#sobre">Sobre</a></li><li><a href="#experiencia">Experiência</a></li><li><a href="#competencias">Competências</a></li><li><a href="#projectos">Projectos</a></li><li><a href="#contacto">Contacto</a></li></ul>
+<button class="tg" id="tg" type="button" aria-label="Alternar tema claro e escuro">Tema</button>
+</nav>
+
+<header class="hero" id="topo">
+<div>
+<h1>Manuel Rui Fumo</h1>
+<p class="role">Administrador de Redes e Sistemas</p>
+<p class="lead">Cuido de toda a infraestrutura de TI da Rainbow Print: rede local, segurança, servidores Linux e suporte. Resolvo avarias de ponta a ponta e desenho redes em Packet Tracer.</p>
+<div class="btns"><a class="btn p" href="#contacto">Fale comigo</a><a class="btn s" href="#projectos">Ver projectos</a></div>
+</div>
+<div class="term" role="img" aria-label="Terminal com resumo do perfil">
+<div class="bar"><i></i><i></i><i></i></div>
+<pre><b>manuel@rainbowprint</b>:~$ whoami
+manuel-rui-fumo
+<b>manuel@rainbowprint</b>:~$ cat perfil.txt
+<em>funcao</em>   admin de redes e sistemas
+<em>desde</em>    jun. 2023
+<em>sistemas</em> debian, ubuntu, kali
+<em>redes</em>    vlan, nat, acls, dns
+<em>local</em>    maputo, moçambique
+<b>manuel@rainbowprint</b>:~$ <span class="cur"></span></pre>
+</div>
+</header>
+
+<section id="sobre">
+<h2>Sobre mim</h2>
+<div class="two">
+<p>Sou administrador de redes e sistemas desde 2023 e responsável por toda a infraestrutura de TI da Rainbow Print (Vendatech Consultores S.A). Faço a manutenção da rede, a ligação de equipamentos e a resolução de avarias de ponta a ponta.</p>
+<p>Trabalho com Debian, Ubuntu Server e Kali Linux, complemento a infraestrutura com Python e bases de dados e preparo a certificação Cisco CCNA. Estou a concluir a licenciatura em TICs na Universidade Joaquim Chissano.</p>
+</div>
+<div class="facts">
+<div class="fact"><strong>2023</strong><span>a gerir sozinho a TI da empresa</span></div>
+<div class="fact"><strong>3 tipos</strong><span>de rede desenhados: PAN, MAN e interprovincial</span></div>
+<div class="fact"><strong>CCNA</strong><span>em preparação</span></div>
+</div>
+</section>
+
+<section id="experiencia">
+<h2>Experiência profissional</h2>
+<div class="job">
+<h3>Administrador de Sistemas</h3>
+<p class="meta">Vendatech Consultores S.A · Rainbow Print (reprografia), Maputo · Jun. 2023 até hoje</p>
+<ul>
+<li>Manutenção completa da rede local: configuração, monitorização e resolução de avarias.</li>
+<li>Desenho de rede e ligação de computadores, impressoras e Wi-Fi, com endereçamento IPv4/IPv6 e DNS.</li>
+<li>Segurança da rede e dos sistemas da empresa.</li>
+<li>Instalação, configuração e manutenção de servidores e computadores Linux (Debian e Ubuntu Server).</li>
+<li>Manutenção de equipamento de rede e impressão: TP-Link, Konica Minolta bizhub C284e, Epson EcoTank, plotters e Cricut.</li>
+<li>Suporte técnico a utilizadores e clientes, e gestão de stock de TI.</li>
+<li>Análise, desenho e desenvolvimento de sistemas internos; planeamento de uma solução ERP para a Vendatech.</li>
+</ul>
+</div>
+</section>
+
+<section id="competencias">
+<h2>Competências técnicas</h2>
+<div class="skills">
+<div class="card"><h3>Redes e protocolos</h3><ul><li>Subnetting, IPv4 e IPv6</li><li>VLAN e trunking 802.1Q</li><li>Routing, NAT e ACLs</li><li>DHCP e DNS</li><li>Cisco Packet Tracer</li></ul></div>
+<div class="card"><h3>Segurança e análise</h3><ul><li>Segurança de redes e sistemas</li><li>SSH com chaves</li><li>Firewall: ufw e iptables</li><li>Wireshark, Nmap, OWASP ZAP</li><li>Kali Linux e criptografia</li></ul></div>
+<div class="card"><h3>Sistemas e virtualização</h3><ul><li>Debian e Ubuntu Server (avançado)</li><li>Máquinas virtuais</li><li>Docker (em aprendizagem)</li><li>Instalação e manutenção</li><li>Office 365</li></ul></div>
+<div class="card"><h3>Dados e automação</h3><ul><li>Oracle, SQL Server, MySQL</li><li>Python e scripting</li><li>Git, GitHub, VS Code</li><li>IA: Claude (API) e ChatGPT</li></ul></div>
+</div>
+</section>
+
+<section id="projectos">
+<h2>Projectos</h2>
+<div class="projs">
+<article class="proj">
+<svg class="net" viewBox="0 0 320 150" role="img" aria-label="Esquema de rede com três ligações"><g><line x1="160" y1="75" x2="60" y2="35"/><line x1="160" y1="75" x2="260" y2="35"/><line x1="160" y1="75" x2="60" y2="115"/><line x1="160" y1="75" x2="260" y2="115"/></g><g fill="#45C7B5"><circle cx="160" cy="75" r="14"/></g><g fill="#F0B34A"><circle cx="60" cy="35" r="8"/><circle cx="260" cy="35" r="8"/><circle cx="60" cy="115" r="8"/><circle cx="260" cy="115" r="8"/></g></svg>
+<div><h3>Desenho de Redes</h3><p>Redes PAN, MAN e interprovincial desenhadas em laboratório.</p><div class="tags"><span>Packet Tracer</span><span>VLAN</span><span>Routing</span></div></div>
+</article>
+<article class="proj">
+<svg viewBox="0 0 320 150" role="img" aria-label="Código QR estilizado"><g fill="#45C7B5"><rect x="105" y="25" width="34" height="34"/><rect x="181" y="25" width="34" height="34"/><rect x="105" y="91" width="34" height="34"/></g><g fill="#0C161B"><rect x="113" y="33" width="18" height="18"/><rect x="189" y="33" width="18" height="18"/><rect x="113" y="99" width="18" height="18"/></g><g fill="#F0B34A"><rect x="155" y="25" width="10" height="10"/><rect x="155" y="45" width="10" height="10"/><rect x="155" y="75" width="10" height="10"/><rect x="181" y="75" width="10" height="10"/><rect x="201" y="91" width="14" height="14"/><rect x="161" y="101" width="14" height="14"/><rect x="185" y="111" width="10" height="14"/></g></svg>
+<div><h3>Pagamento QR com IA</h3><p>Pagamentos por QR com análise automatizada através da API do Claude.</p><div class="tags"><span>Python</span><span>Claude API</span></div></div>
+</article>
+<article class="proj">
+<svg viewBox="0 0 320 150" role="img" aria-label="Gráfico de barras de actividades"><g fill="#45C7B5"><rect x="60" y="80" width="32" height="50"/><rect x="108" y="55" width="32" height="75"/><rect x="156" y="95" width="32" height="35"/><rect x="204" y="35" width="32" height="95"/></g><rect x="50" y="130" width="200" height="3" fill="#F0B34A"/></svg>
+<div><h3>Gestão de Actividades</h3><p>Aplicação web para controlo de actividades operacionais.</p><div class="tags"><span>PHP</span><span>MySQL</span></div></div>
+</article>
+</div>
+</section>
+
+<section id="formacao">
+<h2>Formação</h2>
+<div class="edu">
+<div class="card"><h3>Licenciatura em TICs, 4º ano (em curso)</h3><p>Universidade Joaquim Chissano</p></div>
+<div class="card"><h3>12ª Classe</h3><p>Escola Secundária Josina Machel</p></div>
+<div class="card"><h3>Cisco CCNA (online)</h3><p>Em formação</p></div>
+<div class="card"><h3>Kubernetes, AWS e Azure</h3><p>Em formação</p></div>
+</div>
+<p style="margin:22px 0 0;color:var(--muted)">Idiomas: Português fluente · Inglês bom (técnico)</p>
+</section>
+
+<section id="contacto" class="contact">
+<h2>Vamos trabalhar juntos</h2>
+<a class="big" href="mailto:manuelruifumo@gmail.com">manuelruifumo@gmail.com</a>
+<div class="links">
+<a class="btn p" href="tel:+258861034179">+258 86 103 4179</a>
+<a class="btn s" href="https://linkedin.com/in/manuel-rui-fumo" rel="noopener">LinkedIn</a>
+<a class="btn s" href="https://github.com/Mk4000" rel="noopener">GitHub</a>
+</div>
+</section>
+</div>
+<footer><div class="wrap">© 2026 Manuel Rui Fumo · Maputo, Moçambique</div></footer>
+<script>
+(function(){var b=document.getElementById('tg'),r=document.documentElement;
+b.addEventListener('click',function(){var d=r.getAttribute('data-theme');
+var dark=d?d==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+r.setAttribute('data-theme',dark?'light':'dark');});})();
+</script>
+</body>
+</html>
